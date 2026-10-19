@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /** Java port of the Python WorldSolverMultiList class. */
-public class WorldSolverMultiList {
+public class WordSolverMultiList {
 
   final List<String> wordListFilePaths;
   final int wordLength;
@@ -21,7 +21,7 @@ public class WorldSolverMultiList {
   List<Attempt> tries = new ArrayList<>();
   List<WordleSolver> solvers = new ArrayList<>();
 
-  public WorldSolverMultiList(
+  public WordSolverMultiList(
       List<String> wordListFilePaths,
       int wordLength,
       boolean excludePlurals,
@@ -44,7 +44,7 @@ public class WorldSolverMultiList {
     reset();
   }
 
-  public WorldSolverMultiList(
+  public WordSolverMultiList(
       List<String> wordListFilePaths, int wordLength, boolean excludePlurals) {
     this(wordListFilePaths, wordLength, excludePlurals, new HashMap<>(), false, new HashMap<>());
   }
