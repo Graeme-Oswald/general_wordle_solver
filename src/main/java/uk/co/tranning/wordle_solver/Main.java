@@ -72,7 +72,6 @@ public class Main {
 
     System.out.println("The " + myType[type] + " Solver CLI");
     System.out.println("(Word length: " + length + "; Plurals: " + (plurals ? "Yes" : "No") + ")");
-    System.out.println("Press CTRL+C to exit\n");
     System.out.println("Meanings of symbols:");
     System.out.println(" +\tletter in the word and in the right spot (green box)");
     System.out.println(" ?\tletter in the word but in a wrong spot (orange box)");
@@ -81,7 +80,8 @@ public class Main {
     System.out.println(
         " !done\t\tyou're done guessing a hidden word.  this will reset the state of the solver for you to guess a new hidden word");
     System.out.println(" !tries\t\tsee the tries entered");
-    System.out.println(" !remove_last\tremove the last try entered\n");
+    System.out.println(" !remove_last\tremove the last try entered");
+    System.out.println(" !exit\texit\n");
 
     BufferedReader in =
         new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
@@ -144,6 +144,8 @@ public class Main {
           }
         }
         continue;
+      } else if (userInput.equals("!exit")) {
+    	  System.exit(0);
       } else {
         System.out.println("Invalid input");
       }
