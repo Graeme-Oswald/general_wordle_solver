@@ -11,7 +11,7 @@
   <description>Solver for wordle type puzzles</description>
 
   <scm>
-    <connection>scm:git:htps://github.com/Graeme-Oswald/general_wordle_solver.git</connection>
+    <connection>scm:git:https://github.com/Graeme-Oswald/general_wordle_solver.git</connection>
   </scm>
 
   <properties>
