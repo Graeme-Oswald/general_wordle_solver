@@ -13,14 +13,14 @@
   <scm>
     <connection>scm:git:https://github.com/Graeme-Oswald/general_wordle_solver.git</connection>
   </scm>
-  <distributionManagement>
+
+  <!--distributionManagement>
 		<repository>
 			<id>Maven central</id>
 			<url>https://repo1.maven.org/maven2/</url>
 			<layout>default</layout>
 		</repository>
-	</distributionManagement>
-
+	</distributionManagement-->
   <properties>
     <maven.compiler.release>21</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,6 +29,15 @@
 
   <build>
     <plugins>
+        <plugin>
+          <groupId>org.sonatype.central</groupId>
+          <artifactId>central-publishing-maven-plugin</artifactId>
+          <version>0.12.0</version>
+          <extensions>true</extensions>
+          <configuration>
+            <publishingServerId>central</publishingServerId>
+          </configuration>
+        </plugin>
       <plugin>
         <groupId>com.diffplug.spotless</groupId>
         <artifactId>spotless-maven-plugin</artifactId>
