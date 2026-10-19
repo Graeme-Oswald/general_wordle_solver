@@ -12,6 +12,11 @@ import java.util.Locale;
 /** Java port of the Python command-line interface. */
 public class Main {
 
+	/**
+	 * Main class entry point
+	 * @param argv arguments such as --type, --length and --plurals etc
+	 * @throws IOException if file cannot be opened or read
+	 */
   public static void main(String[] argv) throws IOException {
     int length = 5;
     boolean plurals = false;

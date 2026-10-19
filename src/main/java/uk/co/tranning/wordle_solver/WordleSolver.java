@@ -43,6 +43,13 @@ public class WordleSolver {
   String rightSpotPattern;
   Map<Character, Integer> maxLetterOccurrence;
   List<String> excludedWords;
+  
+  /**
+   * 
+   * @param wordListFilePath list of files to check against
+   * @param wordLength length of guess
+   * @param excludePlurals true if plurals excluded
+   */
 
   public WordleSolver(String wordListFilePath, int wordLength, boolean excludePlurals) {
     this.wordListFilePath = wordListFilePath;
@@ -58,11 +65,17 @@ public class WordleSolver {
     reset();
   }
 
+  /**
+   * Reset processing
+   */
   public void reset() {
     tries = new ArrayList<>();
     resetPatternParameters();
   }
 
+  /**
+   * reset pattern processing
+   */
   void resetPatternParameters() {
     includedLetters = "";
     excludedLetters = "";
@@ -77,6 +90,10 @@ public class WordleSolver {
     effectiveWordList = new ArrayList<>();
   }
 
+  /**
+   * Check for conflicts in patterns of previous guesses
+   * @return list of conflicts found
+   */
   List<PatternConflict> getPatternParameterConflicts() {
     List<PatternConflict> conflicts = new ArrayList<>();
     Character letter = null;
@@ -104,6 +121,9 @@ public class WordleSolver {
     return conflicts;
   }
 
+  /**
+   * update solver with the patterns known so far
+   */
   void updatePatternParameters() {
     resetPatternParameters();
     List<List<String>> possibleWordLists = new ArrayList<>();
@@ -180,6 +200,8 @@ public class WordleSolver {
 
   /**
    * Equivalent of Python's "".join(set(s)); order is irrelevant because only membership is used.
+   * @param s the string to check for unique characters
+   * @return the unique characters in the string
    */
   static String uniqueChars(CharSequence s) {
     LinkedHashSet<Character> set = new LinkedHashSet<>();
@@ -193,7 +215,9 @@ public class WordleSolver {
     return sb.toString();
   }
 
-  /** Returns an empty map when the word list is empty (the Python version returns a falsy []). */
+  /** Returns an empty map when the word list is empty (the Python version returns a falsy []). 
+   * @psrsm words list of possible guesses
+   * @return map of probabilities per character*/
   Map<Character, Double> getLetterProbDict(List<String> words) {
     Map<Character, Double> probs = new LinkedHashMap<>();
     if (words.isEmpty()) {
@@ -213,6 +237,11 @@ public class WordleSolver {
     return probs;
   }
 
+  /**
+   * Get most frequent characters
+   * @param possibleWords list of words
+   * @return list of most frequent characters
+   */
   List<LetterProb> getSuggestedLettersByFreq(List<String> possibleWords) {
     List<LetterProb> letterFreqs = new ArrayList<>();
     if (possibleWords.isEmpty()) {
@@ -226,6 +255,12 @@ public class WordleSolver {
     }
     return letterFreqs;
   }
+  
+  /**
+   * 
+   * @param words
+   * @return
+   */
 
   List<Map<Character, Double>> getLetterPositionalProbDict(List<String> words) {
     List<Map<Character, Double>> positionalProb = new ArrayList<>();
@@ -242,6 +277,12 @@ public class WordleSolver {
     }
     return positionalProb;
   }
+  
+  /**
+   * 
+   * @param words
+   * @return
+   */
 
   List<WordScore> sortWordsWithLetterPositionalProb(List<String> words) {
     List<Map<Character, Double>> letterPositionProb = getLetterPositionalProbDict(words);
@@ -260,6 +301,12 @@ public class WordleSolver {
     wordsWithProb.sort(Comparator.comparingDouble(WordScore::score).reversed());
     return wordsWithProb;
   }
+  
+  /**
+   * 
+   * @param words
+   * @return
+   */
 
   List<String> sortWords(List<String> words) {
     List<String> sortedWords = new ArrayList<>();
@@ -284,6 +331,12 @@ public class WordleSolver {
     }
     return sortedWords;
   }
+  
+  /**
+   * 
+   * @param word
+   * @return
+   */
 
   boolean isNotInWord(String word) {
     for (int i = 0; i < excludedLetters.length(); i++) {
@@ -293,6 +346,12 @@ public class WordleSolver {
     }
     return true;
   }
+  
+  /**
+   * 
+   * @param word
+   * @return
+   */
 
   boolean isInWord(String word) {
     String required = includedLetters + highProbLetters;
@@ -313,6 +372,11 @@ public class WordleSolver {
     return true;
   }
 
+  /**
+   * 
+   * @param word
+   * @return
+   */
   boolean matchRightSpotPattern(String word) {
     for (int i = 0; i < rightSpotPattern.length(); i++) {
       char spot = rightSpotPattern.charAt(i);
@@ -326,6 +390,10 @@ public class WordleSolver {
     return true;
   }
 
+  /**
+   * 
+   * @return
+   */
   List<String> getPossibleWords() {
     if (effectiveWordList.isEmpty()) {
       effectiveWordList = wordList;
@@ -392,6 +460,10 @@ public class WordleSolver {
     return fourthLevelFilter;
   }
 
+  /**
+   * 
+   * @return
+   */
   List<String> getSuggestedWords() {
     List<String> allPossibleWords = getPossibleWords();
     if (allPossibleWords.isEmpty()) {
@@ -423,6 +495,11 @@ public class WordleSolver {
     return sortWords(allPossibleWords);
   }
 
+  /**
+   * 
+   * @param word
+   * @param resultSymbols
+   */
   public void inputGuessResult(String word, String resultSymbols) {
     if (word.codePointCount(0, word.length()) != wordLength
         || resultSymbols.codePointCount(0, resultSymbols.length()) != wordLength) {
