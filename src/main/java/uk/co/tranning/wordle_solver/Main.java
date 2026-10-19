@@ -81,7 +81,7 @@ public class Main {
         " !done\t\tyou're done guessing a hidden word.  this will reset the state of the solver for you to guess a new hidden word");
     System.out.println(" !tries\t\tsee the tries entered");
     System.out.println(" !remove_last\tremove the last try entered");
-    System.out.println(" !exit\texit\n");
+    System.out.println(" !exit\t\texit\n");
 
     BufferedReader in =
         new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
@@ -145,7 +145,7 @@ public class Main {
         }
         continue;
       } else if (userInput.equals("!exit")) {
-    	  System.exit(0);
+        System.exit(0);
       } else {
         System.out.println("Invalid input");
       }
