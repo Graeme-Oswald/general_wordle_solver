@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>tranning.co.uk</groupId>
+    <groupId>uk.co.tranning</groupId>
     <artifactId>wordle_solver_java</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>General Wordle Solver</name>
     <description>Solver for wordle type puzzles</description>
+    <licenses>
+    	<license>
+    		<name>The Apache Software License, Version 2.0</name>
+    		<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    	</license>
+    </licenses>
+    <developers>
+    	<developer>
+    		<name>Graeme Oswald</name>
+    		<email>graeme_oswald@tranning.co.uk</email>
+    		<organization>Tranning</organization>
+    	</developer>
+    </developers>
     <scm>
         <connection>scm:git:https://github.com/Graeme-Oswald/general_wordle_solver.git</connection>
+        <developerConnection>scm:git:https://github.com/Graeme-Oswald/general_wordle_solver.git</developerConnection>
+        <url>https://github.com/Graeme-Oswald/general_wordle_solver/main</url>
     </scm>
     <!--distributionManagement>
 		<repository>
