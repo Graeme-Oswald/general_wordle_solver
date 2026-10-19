@@ -13,6 +13,13 @@
   <scm>
     <connection>scm:git:https://github.com/Graeme-Oswald/general_wordle_solver.git</connection>
   </scm>
+  <distributionManagement>
+		<repository>
+			<id>Maven central</id>
+			<url>https://repo1.maven.org/maven2/</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
 
   <properties>
     <maven.compiler.release>21</maven.compiler.release>
