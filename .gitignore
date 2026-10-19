@@ -26,3 +26,5 @@ replay_pid*
 # eclipse files
 .project
 .settings
+.classpath
+/target/
