@@ -64,8 +64,8 @@ public class Main {
     String[] myType = {"WORDLE", "MACKEM DLE"};
     String[] myTries = {"words", "players"};
 
-    WorldSolverMultiList solverMulti =
-        new WorldSolverMultiList(
+    WordSolverMultiList solverMulti =
+        new WordSolverMultiList(
             new ArrayList<>(Arrays.asList(wordListFilePaths[type])), length, !plurals);
 
     solverMulti.maxTryIndexesForLists = new ArrayList<>(Arrays.asList(2L, Long.MAX_VALUE));
@@ -187,7 +187,7 @@ public class Main {
     return null;
   }
 
-  private static void removeLastTry(WorldSolverMultiList solverMulti) {
+  private static void removeLastTry(WordSolverMultiList solverMulti) {
     if (!solverMulti.tries.isEmpty()) {
       solverMulti.tries.remove(solverMulti.tries.size() - 1);
     }
