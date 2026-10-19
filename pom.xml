@@ -8,7 +8,7 @@
     <name>General Wordle Solver</name>
     <description>Solver for wordle type puzzles</description>
     <scm>
-        <connection>scm:git:htps://github.com/Graeme-Oswald/general_wordle_solver.git</connection>
+        <connection>scm:git:https://github.com/Graeme-Oswald/general_wordle_solver.git</connection>
         <tag>wordle_solver_java-0.0.1</tag>
     </scm>
     <properties>
