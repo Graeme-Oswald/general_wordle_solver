@@ -21,6 +21,15 @@ public class WordSolverMultiList {
   List<Attempt> tries = new ArrayList<>();
   List<WordleSolver> solvers = new ArrayList<>();
 
+  /**
+   * 
+   * @param wordListFilePaths
+   * @param wordLength
+   * @param excludePlurals
+   * @param wordScores
+   * @param orderWordsByScoreDesc
+   * @param wordSymbolCombinations
+   */
   public WordSolverMultiList(
       List<String> wordListFilePaths,
       int wordLength,
@@ -44,11 +53,20 @@ public class WordSolverMultiList {
     reset();
   }
 
+  /**
+   * 
+   * @param wordListFilePaths
+   * @param wordLength
+   * @param excludePlurals
+   */
   public WordSolverMultiList(
       List<String> wordListFilePaths, int wordLength, boolean excludePlurals) {
     this(wordListFilePaths, wordLength, excludePlurals, new HashMap<>(), false, new HashMap<>());
   }
 
+  /**
+   * 
+   */
   public void reset() {
     tries = new ArrayList<>();
     solvers = new ArrayList<>();
@@ -61,12 +79,21 @@ public class WordSolverMultiList {
       solvers.add(solver);
     }
   }
+  
+  /**
+   * 
+   */
 
   public void resetPatternParameters() {
     for (WordleSolver solver : solvers) {
       solver.reset();
     }
   }
+  
+  /**
+   * 
+   * @return
+   */
 
   public List<PatternConflict> getPatternParameterConflicts() {
     if (!solvers.isEmpty()) {
@@ -76,6 +103,10 @@ public class WordSolverMultiList {
     }
     throw new IllegalStateException("No solvers");
   }
+  
+  /**
+   * 
+   */
 
   public void updatePatternParameters() {
     for (WordleSolver solver : solvers) {
@@ -84,6 +115,11 @@ public class WordSolverMultiList {
     }
   }
 
+  /**
+   * 
+   * @param word
+   * @param resultSymbols
+   */
   public void inputGuessResult(String word, String resultSymbols) {
     for (WordleSolver solver : solvers) {
       solver.inputGuessResult(word, resultSymbols);
@@ -91,6 +127,10 @@ public class WordSolverMultiList {
     tries.add(new Attempt(word, resultSymbols));
   }
 
+  /**
+   * 
+   * @return
+   */
   public SuggestedWordsResults getSuggestedWords() {
     for (int i = 0; i < solvers.size(); i++) {
       if (maxTryIndexesForLists.size() >= solvers.size()) {
@@ -107,6 +147,11 @@ public class WordSolverMultiList {
         wordListFilePaths.isEmpty() ? null : wordListFilePaths.get(wordListFilePaths.size() - 1);
     return new SuggestedWordsResults(new ArrayList<>(), lastWordListFilePath);
   }
+  
+  /**
+   * 
+   * @param excludedWords
+   */
 
   public void setExcludedWords(List<String> excludedWords) {
     for (WordleSolver solver : solvers) {

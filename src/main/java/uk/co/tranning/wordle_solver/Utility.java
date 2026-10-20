@@ -20,12 +20,20 @@ public final class Utility {
   /**
    * Loads words of the given length from a word list file, using the default word length (5) and
    * excluding plurals.
+   * @param wordListFilePath list of text files to solve against
+   * @return the filtered list of possible correct next guesses
+   * @throws IOException if file on path can't be opened or read
    */
   public static List<String> loadWordList(String wordListFilePath) throws IOException {
     return loadWordList(wordListFilePath, 5, true);
   }
 
-  /** Loads words of the given length from a word list file, excluding plurals. */
+  /** Loads words of the given length from a word list file, excluding plurals. 
+   * @param wordListFilePath list of text files to solve against
+   * @param wordLength length pf guess
+   * @throws IOException if file on path can't be opened or read
+   * @return the filtered list of possible correct next guesses
+   * */
   public static List<String> loadWordList(String wordListFilePath, int wordLength)
       throws IOException {
     return loadWordList(wordListFilePath, wordLength, true);
@@ -37,6 +45,7 @@ public final class Utility {
    * @param wordListFilePath path to the word list file (one word per line)
    * @param wordLength the required length of each word (in code points)
    * @param excludePlurals if true, words ending in "s" (except "ss") are removed
+   * @throws IOException if file on path can't be opened or read
    * @return the filtered list of words
    */
   public static List<String> loadWordList(
@@ -76,7 +85,7 @@ public final class Utility {
    * @param wordScoreFilePath path to the tab-separated word score file
    * @return map of word to its score
    * @throws IOException if the file cannot be read
-   * @throws IllegalArgumentException if a non-empty line is not in the form word<TAB>score
+   * @throws IllegalArgumentException if a non-empty line is not in the form word score
    */
   public static Map<String, Double> loadWordScoresDict(String wordScoreFilePath)
       throws IOException {
