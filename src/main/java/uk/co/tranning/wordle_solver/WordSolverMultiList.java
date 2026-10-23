@@ -22,13 +22,13 @@ public class WordSolverMultiList {
   List<WordleSolver> solvers = new ArrayList<>();
 
   /**
-   * 
-   * @param wordListFilePaths
-   * @param wordLength
-   * @param excludePlurals
-   * @param wordScores
-   * @param orderWordsByScoreDesc
-   * @param wordSymbolCombinations
+   * COnstructor
+   * @param wordListFilePaths the paths
+   * @param wordLength length of guess
+   * @param excludePlurals self-explanatory
+   * @param wordScores map of probabilities
+   * @param orderWordsByScoreDesc self-explanatory
+   * @param wordSymbolCombinations self-explanatory
    */
   public WordSolverMultiList(
       List<String> wordListFilePaths,
@@ -54,10 +54,10 @@ public class WordSolverMultiList {
   }
 
   /**
-   * 
-   * @param wordListFilePaths
-   * @param wordLength
-   * @param excludePlurals
+   * Simpler constructor
+   * @param wordListFilePaths the paths
+   * @param wordLength length of guess
+   * @param excludePlurals self-explanatory
    */
   public WordSolverMultiList(
       List<String> wordListFilePaths, int wordLength, boolean excludePlurals) {
@@ -65,7 +65,7 @@ public class WordSolverMultiList {
   }
 
   /**
-   * 
+   * reset the solvers
    */
   public void reset() {
     tries = new ArrayList<>();
@@ -81,7 +81,7 @@ public class WordSolverMultiList {
   }
   
   /**
-   * 
+   * reset the patterns and solvers
    */
 
   public void resetPatternParameters() {
@@ -91,8 +91,8 @@ public class WordSolverMultiList {
   }
   
   /**
-   * 
-   * @return
+   * Check for conflicts
+   * @return list of conflicts
    */
 
   public List<PatternConflict> getPatternParameterConflicts() {
@@ -105,7 +105,7 @@ public class WordSolverMultiList {
   }
   
   /**
-   * 
+   * Update the pattern parameters with the latest info
    */
 
   public void updatePatternParameters() {
@@ -116,9 +116,9 @@ public class WordSolverMultiList {
   }
 
   /**
-   * 
-   * @param word
-   * @param resultSymbols
+   * In put a previous guess
+   * @param word the previous guess
+   * @param resultSymbols the symbols associated with the guess
    */
   public void inputGuessResult(String word, String resultSymbols) {
     for (WordleSolver solver : solvers) {
@@ -128,8 +128,8 @@ public class WordSolverMultiList {
   }
 
   /**
-   * 
-   * @return
+   * Get the list of suggested words
+   * @return list of words
    */
   public SuggestedWordsResults getSuggestedWords() {
     for (int i = 0; i < solvers.size(); i++) {
@@ -149,8 +149,8 @@ public class WordSolverMultiList {
   }
   
   /**
-   * 
-   * @param excludedWords
+   * Exclude this list of words
+   * @param excludedWords list of words to exclude from possible answers
    */
 
   public void setExcludedWords(List<String> excludedWords) {

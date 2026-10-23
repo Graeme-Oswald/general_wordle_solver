@@ -45,7 +45,7 @@ public class WordleSolver {
   List<String> excludedWords;
   
   /**
-   * 
+   * Constructor
    * @param wordListFilePath list of files to check against
    * @param wordLength length of guess
    * @param excludePlurals true if plurals excluded
@@ -496,9 +496,9 @@ public class WordleSolver {
   }
 
   /**
-   * 
-   * @param word
-   * @param resultSymbols
+   * Add previous guess
+   * @param word the previous guess
+   * @param resultSymbols symbols associated with guess
    */
   public void inputGuessResult(String word, String resultSymbols) {
     if (word.codePointCount(0, word.length()) != wordLength

@@ -1,35 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>uk.co.tranning</groupId>
     <artifactId>wordle_solver_java</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>General Wordle Solver</name>
     <description>Solver for wordle type puzzles</description>
     <licenses>
-    	<license>
-    		<name>The Apache Software License, Version 2.0</name>
-    		<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    	</license>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
     </licenses>
-
     <developers>
-    	<developer>
-    		<name>Graeme Oswald</name>
-    		<email>graeme_oswald@tranning.co.uk</email>
-    		<organization>Tranning</organization>
-    	</developer>
+        <developer>
+            <name>Graeme Oswald</name>
+            <email>graeme_oswald@tranning.co.uk</email>
+            <organization>Tranning</organization>
+        </developer>
     </developers>
-
     <scm>
         <connection>scm:git:https://github.com/Graeme-Oswald/general_wordle_solver.git</connection>
         <developerConnection>scm:git:https://github.com/Graeme-Oswald/general_wordle_solver.git</developerConnection>
         <url>https://github.com/Graeme-Oswald/general_wordle_solver/main</url>
     </scm>
-
+    <properties>
+        <jar.version>3.5.0</jar.version>
+        <javadoc.version>3.3.1</javadoc.version>
+        <junit.version>4.13.2</junit.version>
+        <maven.compiler.release>21</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <publishing.version>0.12.0</publishing.version>
+        <release.version>3.3.1</release.version>
+        <source.version>3.2.1</source.version>
+        <spotless.version>2.43.0</spotless.version>
+        <tidy.version>1.4.1</tidy.version>
+        <xml.format.version>4.3.0</xml.format.version>
+    </properties>
     <!--distributionManagement>
 		<repository>
 			<id>Maven central</id>
@@ -37,18 +46,20 @@
 			<layout>default</layout>
 		</repository>
 	</distributionManagement-->
-    <properties>
-        <maven.compiler.release>21</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
-
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.12.0</version>
+                <version>${publishing.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <publishingServerId>central</publishingServerId>
@@ -57,7 +68,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>${source.version}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -70,7 +81,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.1</version>
+                <version>${javadoc.version}</version>
                 <executions>
                     <execution>
                         <id>attach-docs</id>
@@ -83,7 +94,7 @@
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
-                <version>2.43.0</version>
+                <version>${spotless.version}</version>
                 <configuration>
                     <java>
                         <googleJavaFormat/>
@@ -109,7 +120,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.5.0</version>
+                <version>${jar.version}</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -123,21 +134,21 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>tidy-maven-plugin</artifactId>
-                <version>1.4.1</version>
+                <version>${tidy.version}</version>
                 <!--executions>
-          <execution>
-            <id>validate</id>
-            <phase>validate</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions-->
+		          <execution>
+		            <id>validate</id>
+		            <phase>validate</phase>
+		            <goals>
+		              <goal>check</goal>
+		            </goals>
+		          </execution>
+		        </executions-->
             </plugin>
             <plugin>
                 <groupId>com.github.hazendaz.maven</groupId>
                 <artifactId>xml-format-maven-plugin</artifactId>
-                <version>4.3.0</version>
+                <version>${xml.format.version}</version>
                 <executions>
                     <execution>
                         <id>xml-format</id>
@@ -154,7 +165,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>3.3.1</version>
+                <version>${release.version}</version>
             </plugin>
         </plugins>
     </build>
